@@ -39,7 +39,8 @@ export function normalizeCommonsPhoto(page) {
     id: 'commons:' + (page.pageid ?? title),
     provider: 'wikimedia_commons',
     file_title: title,
-    source_page: 'https://commons.wikimedia.org/wiki/' +
+    source_page:
+      'https://commons.wikimedia.org/wiki/' +
       encodeURIComponent(title.replaceAll(' ', '_')),
     creator: plainText(meta.Artist),
     credit: plainText(meta.Credit),
@@ -69,7 +70,9 @@ export function normalizeCommonsPhoto(page) {
 
 function boundedInteger(value, minimum, maximum, name) {
   if (!Number.isInteger(value) || value < minimum || value > maximum)
-    throw new RangeError(name + ' must be an integer between ' + minimum + ' and ' + maximum);
+    throw new RangeError(
+      name + ' must be an integer between ' + minimum + ' and ' + maximum,
+    );
   return value;
 }
 
@@ -85,8 +88,12 @@ export async function discoverCommonsPhotos({
   pageSize = 10,
   signal,
 } = {}) {
-  if (typeof category !== 'string' || !category.startsWith('Category:') ||
-      category.length > 250 || category.length <= 'Category:'.length)
+  if (
+    typeof category !== 'string' ||
+    !category.startsWith('Category:') ||
+    category.length > 250 ||
+    category.length <= 'Category:'.length
+  )
     throw new TypeError('A Commons Category: title is required');
   boundedInteger(maxPages, 1, 5, 'maxPages');
   boundedInteger(pageSize, 1, 10, 'pageSize');
@@ -108,7 +115,8 @@ export async function discoverCommonsPhotos({
       gcmlimit: String(pageSize),
       prop: 'imageinfo',
       iiprop: 'size|timestamp|extmetadata',
-      iiextmetadatafilter: 'Artist|Credit|DateTimeOriginal|LicenseShortName|LicenseUrl',
+      iiextmetadatafilter:
+        'Artist|Credit|DateTimeOriginal|LicenseShortName|LicenseUrl',
       format: 'json',
       formatversion: '2',
       ...(continuation || {}),
@@ -122,16 +130,21 @@ export async function discoverCommonsPhotos({
     });
     if (!response.ok) {
       const retryAfter = response.headers?.get?.('retry-after');
-      const error = new Error('Wikimedia Commons HTTP ' + response.status +
-        (retryAfter ? ' (Retry-After ' + retryAfter + ' seconds)' : ''));
+      const error = new Error(
+        'Wikimedia Commons HTTP ' +
+          response.status +
+          (retryAfter ? ' (Retry-After ' + retryAfter + ' seconds)' : ''),
+      );
       error.status = response.status;
       error.retryAfter = retryAfter || null;
       throw error; // Do not circumvent rate limits with automatic retries.
     }
     const payload = await response.json();
     if (payload?.error)
-      throw new Error('Wikimedia Commons API error: ' +
-        String(payload.error.code || payload.error.info || 'unknown'));
+      throw new Error(
+        'Wikimedia Commons API error: ' +
+          String(payload.error.code || payload.error.info || 'unknown'),
+      );
     const pages = Array.isArray(payload?.query?.pages)
       ? payload.query.pages
       : Object.values(payload?.query?.pages || {});

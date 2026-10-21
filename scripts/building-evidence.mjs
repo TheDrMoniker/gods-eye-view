@@ -19,7 +19,9 @@ export async function runBuildingEvidence(args = process.argv.slice(2)) {
     else if (args[i] === '--max-pages' && args[i + 1])
       maxPages = Number(args[++i]);
     else if (args[i] === '--help') {
-      process.stdout.write('Usage: node scripts/building-evidence.mjs [--out FILE] [--max-pages 1..5]\n');
+      process.stdout.write(
+        'Usage: node scripts/building-evidence.mjs [--out FILE] [--max-pages 1..5]\n',
+      );
       return null;
     } else throw new Error('Unknown or incomplete argument: ' + args[i]);
   }
