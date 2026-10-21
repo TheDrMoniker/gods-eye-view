@@ -1,0 +1,5 @@
+# Optional research-only packages; not part of God's Eye runtime.
+laspy[lazrs]>=2.5,<3
+numpy>=2,<3
+pyproj>=3.7,<4
+shapely>=2,<3

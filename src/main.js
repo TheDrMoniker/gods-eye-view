@@ -8,13 +8,35 @@ const application = createStandaloneApplication({
   allowQaRegistration: import.meta.env.DEV,
 });
 
-application.start().catch((error) => {
-  console.error("God's Eye View initialization failed:", error);
-  const loaderStatus = document.querySelector('#loading-screen .loader-status');
-  loaderStatus.textContent = t('Error: {message}', {
-    message: describeError(error),
+application
+  .start()
+  .then(async () => {
+    // Disabled in every production bundle. Never preload third-party geometry.
+    if (
+      !import.meta.env.DEV ||
+      new URLSearchParams(location.search).get('reconResearch') !== '1'
+    )
+      return;
+    const { createApplicationResearchPreview } =
+      await import('./reconstruction/applicationResearch.js');
+    const research = createApplicationResearchPreview({ application });
+    const stop = application.subscribe((state) => {
+      if (state.status === 'destroying' || state.status === 'destroyed') {
+        research.dispose();
+        stop();
+      }
+    });
+    window.__gevReconstructionResearch = research;
+  })
+  .catch((error) => {
+    console.error("God's Eye View initialization failed:", error);
+    const loaderStatus = document.querySelector(
+      '#loading-screen .loader-status',
+    );
+    loaderStatus.textContent = t('Error: {message}', {
+      message: describeError(error),
+    });
+    loaderStatus.style.color = '#ff4444';
   });
-  loaderStatus.style.color = '#ff4444';
-});
 
 export { application };
