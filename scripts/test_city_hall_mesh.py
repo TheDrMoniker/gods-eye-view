@@ -1,7 +1,7 @@
 """Offline geometry consistency tests: no external requests or source photos."""
 import importlib.util
 from pathlib import Path
-import json
+import io
 import unittest
 import numpy as np
 import trimesh
@@ -47,7 +47,7 @@ class TestCandidateMesh(unittest.TestCase):
         self.assertLess(scene.bounds[1][0] - scene.bounds[0][0], 250)
         glb = scene.export(file_type="glb")
         self.assertGreater(len(glb), 1000)
-        parsed = trimesh.load(glb, file_type="glb", force="scene")
+        parsed = trimesh.load(io.BytesIO(glb), file_type="glb", force="scene")
         self.assertGreater(len(parsed.geometry), 0)
 
     def test_identity_and_geometry_are_fail_closed(self):
