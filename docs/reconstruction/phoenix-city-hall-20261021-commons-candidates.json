@@ -1,0 +1,733 @@
+{
+  "schema": "gods-eye-building-evidence/1",
+  "gate": "GODS-EYE-RECONSTRUCTION-01",
+  "status": "EVIDENCE_INTAKE_HOLD",
+  "generated_at": "2026-10-21T15:10:39.191Z",
+  "target": {
+    "id": "phoenix-city-hall-pilot",
+    "name": "Phoenix City Hall",
+    "lat": 33.4489,
+    "lon": -112.0771,
+    "address": "200 W Washington St, Phoenix, AZ",
+    "coordinate_quality": "approximate_reference_only",
+    "coordinate_source": "https://en.wikipedia.org/wiki/Phoenix_City_Hall",
+    "commons_category": "Category:Phoenix City Hall",
+    "building_footprint_id": null
+  },
+  "sources": {
+    "photographs": "wikimedia_commons",
+    "category": "Category:Phoenix City Hall",
+    "data_truncated": false,
+    "footprint": null,
+    "lidar": null
+  },
+  "summary": {
+    "discovered_photo_candidates": 22,
+    "verified_licensed_photos": 0,
+    "measured_footprint_available": false,
+    "measured_lidar_available": false,
+    "observed_surfaces": [],
+    "missing_surfaces": [
+      "north",
+      "east",
+      "south",
+      "west",
+      "roof"
+    ],
+    "reconstructed_mesh_exists": false,
+    "google_earth_derived_assets": false
+  },
+  "candidates": [
+    {
+      "id": "commons:30094765",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Marvin Andrews Memorial.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3AMarvin_Andrews_Memorial.jpg",
+      "creator": "Visitor7",
+      "credit": "Own work",
+      "license": {
+        "short_name": "CC BY-SA 3.0",
+        "url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "2013-12-02 10:47:54",
+      "uploaded_at": "2013-12-10T20:42:28Z",
+      "pixel_width": 3648,
+      "pixel_height": 5472,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:30094766",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Marvin Andrews Way.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3AMarvin_Andrews_Way.jpg",
+      "creator": "Visitor7",
+      "credit": "Own work",
+      "license": {
+        "short_name": "CC BY-SA 3.0",
+        "url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "2013-12-02 10:46:26",
+      "uploaded_at": "2013-12-10T20:42:29Z",
+      "pixel_width": 5472,
+      "pixel_height": 3648,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:53815525",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Copper Square, Phoenix, AZ - panoramio (1).jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3ACopper_Square%2C_Phoenix%2C_AZ_-_panoramio_(1).jpg",
+      "creator": "davidpinter",
+      "credit": "https://web.archive.org/web/20161019145958/http://www.panoramio.com/photo/56933292",
+      "license": {
+        "short_name": "CC BY 3.0",
+        "url": "https://creativecommons.org/licenses/by/3.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "Taken on 6 August 2011",
+      "uploaded_at": "2016-12-06T04:55:32Z",
+      "pixel_width": 2848,
+      "pixel_height": 4288,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:53815538",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Copper Square, Phoenix, AZ - panoramio (2).jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3ACopper_Square%2C_Phoenix%2C_AZ_-_panoramio_(2).jpg",
+      "creator": "davidpinter",
+      "credit": "https://web.archive.org/web/20161023141714/http://www.panoramio.com/photo/56933322",
+      "license": {
+        "short_name": "CC BY 3.0",
+        "url": "https://creativecommons.org/licenses/by/3.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "Taken on 6 August 2011",
+      "uploaded_at": "2016-12-06T04:56:53Z",
+      "pixel_width": 2848,
+      "pixel_height": 4288,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:53815558",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Government District, Phoenix, AZ - panoramio (3).jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3AGovernment_District%2C_Phoenix%2C_AZ_-_panoramio_(3).jpg",
+      "creator": "davidpinter",
+      "credit": "https://web.archive.org/web/20161021010527/http://www.panoramio.com/photo/56933338",
+      "license": {
+        "short_name": "CC BY 3.0",
+        "url": "https://creativecommons.org/licenses/by/3.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "Taken on 6 August 2011",
+      "uploaded_at": "2016-12-06T04:57:53Z",
+      "pixel_width": 2848,
+      "pixel_height": 4288,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:53815573",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Copper Square, Phoenix, AZ - panoramio (3).jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3ACopper_Square%2C_Phoenix%2C_AZ_-_panoramio_(3).jpg",
+      "creator": "davidpinter",
+      "credit": "https://web.archive.org/web/20161020072252/http://www.panoramio.com/photo/56933372",
+      "license": {
+        "short_name": "CC BY 3.0",
+        "url": "https://creativecommons.org/licenses/by/3.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "Taken on 6 August 2011",
+      "uploaded_at": "2016-12-06T04:59:13Z",
+      "pixel_width": 2848,
+      "pixel_height": 4288,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:53815619",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Copper Square, Phoenix, AZ - panoramio (8).jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3ACopper_Square%2C_Phoenix%2C_AZ_-_panoramio_(8).jpg",
+      "creator": "davidpinter",
+      "credit": "https://web.archive.org/web/20161023111017/http://www.panoramio.com/photo/56933442",
+      "license": {
+        "short_name": "CC BY 3.0",
+        "url": "https://creativecommons.org/licenses/by/3.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "Taken on 6 August 2011",
+      "uploaded_at": "2016-12-06T05:02:54Z",
+      "pixel_width": 2848,
+      "pixel_height": 4288,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:54310039",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Downtown Phoenix, Arizona - panoramio (15).jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3ADowntown_Phoenix%2C_Arizona_-_panoramio_(15).jpg",
+      "creator": "davidpinter",
+      "credit": "https://web.archive.org/web/20161021071627/http://www.panoramio.com/photo/61530099",
+      "license": {
+        "short_name": "CC BY 3.0",
+        "url": "https://creativecommons.org/licenses/by/3.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "Taken on 30 October 2011",
+      "uploaded_at": "2016-12-20T18:56:15Z",
+      "pixel_width": 4288,
+      "pixel_height": 2848,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:54363379",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Downtown Phoenix, Arizona - panoramio (20).jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3ADowntown_Phoenix%2C_Arizona_-_panoramio_(20).jpg",
+      "creator": "davidpinter",
+      "credit": "https://web.archive.org/web/20161023171006/http://www.panoramio.com/photo/61398758",
+      "license": {
+        "short_name": "CC BY 3.0",
+        "url": "https://creativecommons.org/licenses/by/3.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "Taken on 30 October 2011",
+      "uploaded_at": "2016-12-22T13:29:52Z",
+      "pixel_width": 2848,
+      "pixel_height": 4288,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:88621236",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Flag of the Republic of China in front of Phoenix City Hall, 2009-11-05.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3AFlag_of_the_Republic_of_China_in_front_of_Phoenix_City_Hall%2C_2009-11-05.jpg",
+      "creator": "Alankang",
+      "credit": "Own work",
+      "license": {
+        "short_name": "CC BY-SA 4.0",
+        "url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "2009-11-05 00:01:31",
+      "uploaded_at": "2020-03-26T15:30:33Z",
+      "pixel_width": 1200,
+      "pixel_height": 1600,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:4378226",
+      "provider": "wikimedia_commons",
+      "file_title": "File:P378. Phoenix City Hall.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3AP378._Phoenix_City_Hall.jpg",
+      "creator": "sean horan",
+      "credit": "originally posted to Flickr as P378. Phoenix City Hall",
+      "license": {
+        "short_name": "CC BY 2.0",
+        "url": "https://creativecommons.org/licenses/by/2.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "2006-05-18 19:09:43",
+      "uploaded_at": "2008-07-14T15:31:58Z",
+      "pixel_width": 507,
+      "pixel_height": 676,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:5816262",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Phoenix city hall-1600x1200.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3APhoenix_city_hall-1600x1200.jpg",
+      "creator": "Azwatchdog",
+      "credit": "Own work",
+      "license": {
+        "short_name": "CC BY 2.5",
+        "url": "https://creativecommons.org/licenses/by/2.5",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "2009-09-17",
+      "uploaded_at": "2017-11-15T17:24:39Z",
+      "pixel_width": 1600,
+      "pixel_height": 1048,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:30094769",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Phoenix City Hall-1.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3APhoenix_City_Hall-1.jpg",
+      "creator": "Visitor7",
+      "credit": "Own work",
+      "license": {
+        "short_name": "CC BY-SA 3.0",
+        "url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "2013-12-02 10:47:40",
+      "uploaded_at": "2013-12-10T20:42:34Z",
+      "pixel_width": 5472,
+      "pixel_height": 3648,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:30094773",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Phoenix City Hall-2.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3APhoenix_City_Hall-2.jpg",
+      "creator": "Visitor7",
+      "credit": "Own work",
+      "license": {
+        "short_name": "CC BY-SA 3.0",
+        "url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "2013-12-02 10:52:16",
+      "uploaded_at": "2013-12-10T20:42:38Z",
+      "pixel_width": 3376,
+      "pixel_height": 5064,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:30094774",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Phoenix City Hall-3.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3APhoenix_City_Hall-3.jpg",
+      "creator": "Visitor7",
+      "credit": "Own work",
+      "license": {
+        "short_name": "CC BY-SA 3.0",
+        "url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "2013-12-02 11:21:51",
+      "uploaded_at": "2013-12-10T20:42:39Z",
+      "pixel_width": 3521,
+      "pixel_height": 3521,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:49497437",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Phoenix City Hall - panoramio.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3APhoenix_City_Hall_-_panoramio.jpg",
+      "creator": "Jordan W.",
+      "credit": "https://web.archive.org/web/20161012020758/http://www.panoramio.com/photo/13169444",
+      "license": {
+        "short_name": "CC BY-SA 3.0",
+        "url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "Taken on 10 November 2007",
+      "uploaded_at": "2016-06-16T11:31:46Z",
+      "pixel_width": 1200,
+      "pixel_height": 1600,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:53815563",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Phoenix City Hall, Copper Square, Phoenix, AZ - panoramio.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3APhoenix_City_Hall%2C_Copper_Square%2C_Phoenix%2C_AZ_-_panoramio.jpg",
+      "creator": "davidpinter",
+      "credit": "https://web.archive.org/web/20161019203137/http://www.panoramio.com/photo/56933351",
+      "license": {
+        "short_name": "CC BY 3.0",
+        "url": "https://creativecommons.org/licenses/by/3.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "Taken on 6 August 2011",
+      "uploaded_at": "2016-12-06T04:58:13Z",
+      "pixel_width": 2848,
+      "pixel_height": 4288,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:53815566",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Phoenix City Hall, Copper Square, Phoenix, AZ - panoramio (1).jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3APhoenix_City_Hall%2C_Copper_Square%2C_Phoenix%2C_AZ_-_panoramio_(1).jpg",
+      "creator": "davidpinter",
+      "credit": "https://web.archive.org/web/20161022113703/http://www.panoramio.com/photo/56933343",
+      "license": {
+        "short_name": "CC BY 3.0",
+        "url": "https://creativecommons.org/licenses/by/3.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "Taken on 6 August 2011",
+      "uploaded_at": "2016-12-06T04:58:33Z",
+      "pixel_width": 2848,
+      "pixel_height": 4288,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:64965724",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Phoenix City Hall (25325678478).jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3APhoenix_City_Hall_(25325678478).jpg",
+      "creator": "Gage Skidmore from Peoria, AZ, United States of America",
+      "credit": "Phoenix City Hall",
+      "license": {
+        "short_name": "CC BY-SA 2.0",
+        "url": "https://creativecommons.org/licenses/by-sa/2.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "2016-12-17 15:49",
+      "uploaded_at": "2017-12-21T18:05:08Z",
+      "pixel_width": 5760,
+      "pixel_height": 3840,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:107911938",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Northwest Flight 255 Memorial in downtown Phoenix.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3ANorthwest_Flight_255_Memorial_in_downtown_Phoenix.jpg",
+      "creator": "Highpointer",
+      "credit": "Own work",
+      "license": {
+        "short_name": "CC BY-SA 4.0",
+        "url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "2021-07-24",
+      "uploaded_at": "2021-07-27T00:54:33Z",
+      "pixel_width": 3609,
+      "pixel_height": 2372,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:30094772",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Phoenix City Hall-4.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3APhoenix_City_Hall-4.jpg",
+      "creator": "Visitor7",
+      "credit": "Own work",
+      "license": {
+        "short_name": "CC BY-SA 3.0",
+        "url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "2013-12-02 11:34:14",
+      "uploaded_at": "2013-12-10T20:42:39Z",
+      "pixel_width": 3176,
+      "pixel_height": 4764,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    },
+    {
+      "id": "commons:160359537",
+      "provider": "wikimedia_commons",
+      "file_title": "File:Phoenix, Arizona, USA (54221044464).jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3APhoenix%2C_Arizona%2C_USA_(54221044464).jpg",
+      "creator": "Domenico Convertini from Zurich, Schweiz",
+      "credit": "Phoenix, Arizona, USA",
+      "license": {
+        "short_name": "CC BY-SA 2.0",
+        "url": "https://creativecommons.org/licenses/by-sa/2.0",
+        "hint": "potentially_reusable",
+        "status": "needs_human_review"
+      },
+      "captured_at_text": "Taken on 5 May 2024",
+      "uploaded_at": "2025-02-23T09:48:44Z",
+      "pixel_width": 5142,
+      "pixel_height": 3428,
+      "review": {
+        "target_identity": "unverified",
+        "rights": "unreviewed",
+        "view": "unverified",
+        "camera_pose": "unverified",
+        "reviewed_by": null,
+        "reviewed_at": null
+      },
+      "geometry_role": "unverified",
+      "download_approved": false,
+      "reconstruction_approved": false
+    }
+  ],
+  "next_actions": [
+    {
+      "priority": 1,
+      "task": "verify_footprint",
+      "why": "Obtain independent georeferenced footprint, building ID, datum and rights"
+    },
+    {
+      "priority": 2,
+      "task": "verify_lidar",
+      "why": "Obtain and validate measured heights and roof geometry"
+    },
+    {
+      "priority": 3,
+      "task": "review_photo_candidates",
+      "count": 22,
+      "why": "Match each image to the building; verify creator, license and reuse rights"
+    },
+    {
+      "priority": 4,
+      "task": "cover_missing_surface",
+      "view": "north",
+      "why": "Find a licensed photo/view with verified building identity"
+    },
+    {
+      "priority": 4,
+      "task": "cover_missing_surface",
+      "view": "east",
+      "why": "Find a licensed photo/view with verified building identity"
+    },
+    {
+      "priority": 4,
+      "task": "cover_missing_surface",
+      "view": "south",
+      "why": "Find a licensed photo/view with verified building identity"
+    },
+    {
+      "priority": 4,
+      "task": "cover_missing_surface",
+      "view": "west",
+      "why": "Find a licensed photo/view with verified building identity"
+    },
+    {
+      "priority": 4,
+      "task": "cover_missing_surface",
+      "view": "roof",
+      "why": "Find a licensed photo/view with verified building identity"
+    },
+    {
+      "priority": 5,
+      "task": "calibrate_and_reconstruct",
+      "why": "Only after source review, camera calibration and overlapping views; no AI inference may be labeled measured"
+    }
+  ]
+}
