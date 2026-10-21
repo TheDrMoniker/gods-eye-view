@@ -65,3 +65,9 @@ Full checkout regression: `npm test`, `npm run check:boundaries`, `npm run forma
 5. **Public release:** only after geometry error bounds, provenance and rights are measured and approved; then connect Clare through its governed bridge rather than importing Google assets or bypassing the current runtime.
 
 Details: [LiDAR evidence](GODS-EYE-RECONSTRUCTION-01-LIDAR.md), [geometry research](GODS-EYE-UNIFIED-STREET-RECON-01-GEOMETRY.md), [unified development design](GODS-EYE-UNIFIED-STREET-RECON-01-UNIFIED.md), [adapter contract](GODS-EYE-UNIFIED-STREET-RECON-01-ADAPTER.md).
+
+## 2026-10-21 — narrow graphical render validation
+
+**Browser/WebGL render and teardown PASS in an isolated Cesium QA harness** for a synthetic GLB and the actual 45,032-byte local research City Hall GLB. Chrome 153 / WebGL2 loaded both models, and screenshot comparisons after disposal showed 27,598 and 22,355 strongly changed pixels respectively; both released their Cesium primitives without page exceptions. See [the reproducible browser QA gate](GODS-EYE-UNIFIED-STREET-RECON-01-BROWSER-QA.md).
+
+This does **not** certify geographic datum/placement, production God's Eye UI provider switching, model reproduction rights, City Hall footprint correctness, or photo texturing. The Cesium viewport used a test-only height placeholder with the globe hidden. Only the standalone **render-and-cleanup sub-gate** is now PASS; reconstruction/public promotion stays HOLD.
