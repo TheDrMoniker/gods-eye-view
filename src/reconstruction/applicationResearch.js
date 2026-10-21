@@ -22,14 +22,24 @@ export function createApplicationResearchPreview({
 
   const panel = doc.createElement('section');
   panel.id = 'gev-reconstruction-research';
+  // i18n-ignore: development-only research panel.
   panel.setAttribute('aria-label', 'City Hall research reconstruction');
   Object.assign(panel.style, {
-    position: 'fixed', left: '12px', bottom: '12px', zIndex: '2147483000',
-    padding: '14px', width: '330px', maxWidth: 'calc(100vw - 48px)',
-    background: 'rgba(4,18,32,.96)', color: '#e5f0ff',
-    border: '1px solid #b0c0d0', borderRadius: '10px',
-    font: '13px/1.5 system-ui', boxShadow: '0 8px 25px #0009',
+    position: 'fixed',
+    left: '12px',
+    bottom: '12px',
+    zIndex: '2147483000',
+    padding: '14px',
+    width: '330px',
+    maxWidth: 'calc(100vw - 48px)',
+    background: 'rgba(4,18,32,.96)',
+    color: '#e5f0ff',
+    border: '1px solid #b0c0d0',
+    borderRadius: '10px',
+    font: '13px/1.5 system-ui',
+    boxShadow: '0 8px 25px #0009',
   });
+  // i18n-ignore: development-only research panel.
   panel.innerHTML = `<strong>God's Eye · City Hall research</strong>
     <div style="font-size:11px;color:#f6c76b">UNVERIFIED 2014 MASSING · NO LICENSED TEXTURES</div>
     <label for="gev-recon-height">Verified WGS84 ellipsoidal site height (m)</label>
@@ -45,14 +55,18 @@ export function createApplicationResearchPreview({
   const height = panel.querySelector('#gev-recon-height');
   const photos = [];
   const pilot = createGodsEyeStreetReconPilot({
-    streetLevel, Cesium: CesiumLib, viewer,
+    streetLevel,
+    Cesium: CesiumLib,
+    viewer,
     onPhotoCandidate: (record) => photos.push(record),
   });
   pilot.startStreetEvidence();
   let disposed = false;
   let currentBlobUrl = null;
   let generation = 0;
-  const update = (message) => { if (!disposed) status.textContent = message; };
+  const update = (message) => {
+    if (!disposed) status.textContent = message;
+  };
   function clearBlob() {
     if (currentBlobUrl) URL.revokeObjectURL(currentBlobUrl);
     currentBlobUrl = null;
@@ -72,11 +86,16 @@ export function createApplicationResearchPreview({
         fetchImpl('/output/reconstruction/phoenix-city-hall-candidate.glb'),
       ]);
       if (!meta.ok || !modelFile.ok)
-        throw new Error('Local GLB files unavailable; build --research-only first');
+        throw new Error(
+          'Local GLB files unavailable; build --research-only first',
+        );
       const manifest = await meta.json();
-      if (manifest?.status !== 'GEOMETRY_CANDIDATE_UNCERTIFIED' ||
-          manifest?.rights?.approved_for_public_release !== false ||
-          !Array.isArray(manifest.textures) || manifest.textures.length !== 0)
+      if (
+        manifest?.status !== 'GEOMETRY_CANDIDATE_UNCERTIFIED' ||
+        manifest?.rights?.approved_for_public_release !== false ||
+        !Array.isArray(manifest.textures) ||
+        manifest.textures.length !== 0
+      )
         throw new Error('Unsafe model rights manifest');
       const buffer = await modelFile.blob();
       if (buffer.size < 20 || buffer.size > 15000000)
@@ -88,12 +107,18 @@ export function createApplicationResearchPreview({
       );
       currentBlobUrl = url;
       const model = await pilot.showResearchMassing({
-        glbUrl: url, manifest, originEllipsoidalHeightM: ellipsoidal,
+        glbUrl: url,
+        manifest,
+        originEllipsoidalHeightM: ellipsoidal,
       });
       if (disposed || ticket !== generation || !model) return null;
       const [lon, lat] = manifest.origin_wgs84_lon_lat;
       viewer.camera.flyTo({
-        destination: CesiumLib.Cartesian3.fromDegrees(lon, lat, ellipsoidal + 280),
+        destination: CesiumLib.Cartesian3.fromDegrees(
+          lon,
+          lat,
+          ellipsoidal + 280,
+        ),
         orientation: {
           heading: CesiumLib.Math.toRadians(12),
           pitch: CesiumLib.Math.toRadians(-45),
@@ -101,7 +126,9 @@ export function createApplicationResearchPreview({
         },
         duration: 0,
       });
-      update('Research GLB visible in actual app. Height supplied, NOT independently certified.');
+      update(
+        'Research GLB visible in actual app. Height supplied, NOT independently certified.',
+      );
       return model;
     } catch (error) {
       update('BLOCKED: ' + error.message);
@@ -114,11 +141,17 @@ export function createApplicationResearchPreview({
     clearBlob();
     update('Model hidden.');
   };
-  panel.querySelector('[data-action=load]').addEventListener('click', previewLocalGLB);
+  panel
+    .querySelector('[data-action=load]')
+    .addEventListener('click', previewLocalGLB);
   panel.querySelector('[data-action=hide]').addEventListener('click', hide);
-  panel.querySelector('[data-action=close]').addEventListener('click', () => api.dispose());
+  panel
+    .querySelector('[data-action=close]')
+    .addEventListener('click', () => api.dispose());
   const api = Object.freeze({
-    panel, photos, previewLocalGLB,
+    panel,
+    photos,
+    previewLocalGLB,
     dispose() {
       if (disposed) return;
       disposed = true;
