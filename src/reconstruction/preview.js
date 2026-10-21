@@ -13,12 +13,13 @@ export async function addLocalResearchBuildingPreview({
   originEllipsoidalHeightM,
   localResearchOnly = false,
 } = {}) {
-  if (!localResearchOnly)
+  if (localResearchOnly !== true)
     throw new Error(
       'Unreviewed building geometry: explicit research preview only',
     );
   if (
     typeof glbUrl !== 'string' ||
+    /[\\\s\u0000-\u001f]/.test(glbUrl) ||
     !(
       glbUrl.startsWith('blob:') ||
       (glbUrl.startsWith('/') &&

@@ -115,3 +115,31 @@ test('protocol-relative URLs cannot bypass local-only asset policy', async () =>
     /local GLB/,
   );
 });
+
+test('preview requires boolean opt-in and rejects browser-normalized remote paths', async () => {
+  const h = harness();
+  const options = {
+    ...h,
+    glbUrl: '/candidate.glb',
+    originLon: -112.077,
+    originLat: 33.448,
+    originEllipsoidalHeightM: 340,
+    localResearchOnly: true,
+  };
+  for (const localResearchOnly of ['false', 1, {}]) {
+    await assert.rejects(
+      addLocalResearchBuildingPreview({ ...options, localResearchOnly }),
+      /explicit research preview/,
+    );
+  }
+  for (const glbUrl of [
+    '/\\outside.example/mesh.glb',
+    '/\n/outside.example/mesh.glb',
+  ]) {
+    await assert.rejects(
+      addLocalResearchBuildingPreview({ ...options, glbUrl }),
+      /local GLB/,
+    );
+  }
+  assert.deepEqual(h.calls, []);
+});

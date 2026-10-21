@@ -123,6 +123,9 @@ test('public texture clearance needs independent rights evidence and review', ()
     review: {
       identity: 'verified',
       rights: 'approved',
+      view: 'verified',
+      provider_terms: 'approved',
+      provider_terms_evidence_url: 'https://panoramax.example/terms',
       reviewed_by: 'reviewer',
       reviewed_at: '2026-10-21T00:00:00Z',
       rights_evidence_url: 'https://creativecommons.org/licenses/by-sa/4.0/',
@@ -130,8 +133,90 @@ test('public texture clearance needs independent rights evidence and review', ()
   };
   assert.equal(isReleaseClearedStreetTexture(record), false);
   assert.equal(isReleaseClearedStreetTexture(candidate), true);
+  for (const provider of ['other', undefined, 'google']) {
+    assert.equal(
+      isReleaseClearedStreetTexture({ ...candidate, provider }),
+      false,
+    );
+  }
+  for (const field of [
+    'view',
+    'provider_terms',
+    'provider_terms_evidence_url',
+  ]) {
+    assert.equal(
+      isReleaseClearedStreetTexture({
+        ...candidate,
+        review: { ...candidate.review, [field]: null },
+      }),
+      false,
+    );
+  }
   assert.equal(
     isReleaseClearedStreetTexture({ ...candidate, creator: null }),
     false,
   );
+});
+
+test('all existing providers carry distinct review requirements without inferred licences', () => {
+  const records = ['mapillary', 'kartaview', 'panoramax', 'google'].map(
+    (providerId) =>
+      normalizeStreetPoseEvidence({
+        ...opened().street,
+        providerId,
+        license: null,
+      }),
+  );
+  assert.equal(
+    new Set(records.map((e) => e.rights_policy.requirement)).size,
+    4,
+  );
+  for (const record of records) {
+    assert.equal(record.license_claim, null);
+    assert.equal(record.rights_policy.automatic_download, false);
+    assert.equal(record.altitude_reference, 'unknown');
+    assert.ok(Object.isFrozen(record.rights_policy));
+  }
+});
+
+test('invalid heading is unknown and cannot suggest a flat image sees the target', () => {
+  for (const bearing of [null, NaN, Infinity, -1, 361, '90']) {
+    const record = normalizeStreetPoseEvidence({ ...opened().street, bearing });
+    assert.equal(record.bearing_deg, null);
+    assert.equal(
+      proposeStreetFacade(record, { lon: -112.0773, lat: 33.44865 })
+        .might_show_target,
+      false,
+    );
+  }
+  assert.equal(
+    normalizeStreetPoseEvidence({ ...opened().street, bearing: 360 })
+      .bearing_deg,
+    0,
+  );
+  assert.throws(() =>
+    proposeStreetFacade({ location: { lon: 181, lat: 0 } }, { lon: 0, lat: 0 }),
+  );
+});
+
+test('dateline neighbours remain near and malformed source links remain unknown', () => {
+  const evidence = normalizeStreetPoseEvidence({
+    ...opened().street,
+    position: { lon: 179.999, lat: 0 },
+    bearing: 90,
+  });
+  const proposal = proposeStreetFacade(evidence, { lon: -179.999, lat: 0 });
+  assert.equal(proposal.might_show_target, true);
+  assert.ok(proposal.distance_m < 225);
+  for (const externalUrl of [
+    'https://',
+    'https://user:password@example.org/a',
+    'http://example.org',
+  ]) {
+    assert.equal(
+      normalizeStreetPoseEvidence({ ...opened().street, externalUrl })
+        .source_url,
+      null,
+    );
+  }
 });

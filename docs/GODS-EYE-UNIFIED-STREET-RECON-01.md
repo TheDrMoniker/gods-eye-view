@@ -2,6 +2,13 @@
 
 **Checkpoint: 2026-10-21.** Development branch: `feature/gods-eye-reconstruction-01-evidence-r1`; draft PR #1. This file is the short canonical gate ledger. Detailed measurements and procedures live in the linked reports below. **Do not merge for public release yet.**
 
+Follow-up: the existing adapter now records distinct per-provider rights review
+requirements, rejects unknown providers at texture gates, labels viewer direction
+and unknown altitude datum explicitly, and handles invalid headings and dateline
+coordinates conservatively. The opt-in local preview rejects non-boolean flags
+and browser-normalized remote paths. See the [rights and validation follow-up](GODS-EYE-UNIFIED-STREET-RECON-01-RIGHTS.md)
+for current test results; the table below preserves the earlier checkpoint.
+
 ## One architecture, existing providers retained
 
 - Original God's Eye Cesium map stacks, imagery sources, camera, geospatial data, and Street Level viewers are authoritative. No duplicate street-data provider, map-source switcher, street-camera model or second default map is introduced.

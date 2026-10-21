@@ -1,5 +1,54 @@
 /** Adapt existing StreetPose metadata without acquiring provider imagery. */
 const PROVIDERS = new Set(['mapillary', 'kartaview', 'panoramax', 'google']);
+// Review requirements, not a grant of rights or an inferred per-image licence.
+export const STREET_EVIDENCE_RIGHTS = Object.freeze(
+  Object.fromEntries(
+    [
+      [
+        'mapillary',
+        'image_license_and_api_terms',
+        'https://www.mapillary.com/terms',
+      ],
+      [
+        'kartaview',
+        'attribution_sharealike_and_service_terms',
+        'https://kartaview.org/terms',
+      ],
+      [
+        'panoramax',
+        'per_image_license_and_host_instance_terms',
+        'https://panoramax.fr/mentions-legales',
+      ],
+      [
+        'google',
+        'view_only_no_reconstruction',
+        'https://cloud.google.com/maps-platform/terms',
+      ],
+    ].map(([provider, requirement, reference]) => [
+      provider,
+      Object.freeze({
+        requirement,
+        reference,
+        automatic_download: false,
+        reconstruction:
+          provider === 'google' ? 'prohibited' : 'manual_review_required',
+      }),
+    ]),
+  ),
+);
+
+function httpsUrl(value) {
+  if (typeof value !== 'string') return null;
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' && !url.username && !url.password
+      ? url.href
+      : null;
+  } catch {
+    return null;
+  }
+}
+
 export function normalizeStreetPoseEvidence(pose) {
   if (!pose || !PROVIDERS.has(pose.providerId))
     throw new TypeError('Unknown street provider');
@@ -16,18 +65,18 @@ export function normalizeStreetPoseEvidence(pose) {
     throw new TypeError('Missing image ID');
   const angle = (value, low, high) =>
     Number.isFinite(value) && value >= low && value <= high ? value : null;
-  const url =
-    typeof pose.externalUrl === 'string' && /^https:\/\//.test(pose.externalUrl)
-      ? pose.externalUrl
-      : null;
+  const url = httpsUrl(pose.externalUrl);
   return Object.freeze({
     schema: 'gods-eye-street-photo-evidence/1',
     provider: pose.providerId,
     image_id: pose.imageId,
     location: { lon, lat },
-    bearing_deg: angle(pose.bearing, 0, 360),
+    bearing_deg:
+      angle(pose.bearing, 0, 360) === null ? null : pose.bearing % 360,
+    heading_reference: 'street_view_direction_not_calibrated_camera_extrinsics',
     tilt_deg: angle(pose.tilt, -90, 90),
     altitude_m: Number.isFinite(pose.altitude) ? pose.altitude : null,
+    altitude_reference: 'unknown',
     captured_at_ms: Number.isFinite(pose.capturedAt) ? pose.capturedAt : null,
     is_panorama: pose.isPano === true,
     creator: pose.creator || null,
@@ -43,6 +92,7 @@ export function normalizeStreetPoseEvidence(pose) {
     },
     texture_approved: false,
     geometry_approved: false,
+    rights_policy: STREET_EVIDENCE_RIGHTS[pose.providerId],
     // Google Street View is view-only, regardless of displayed image license text.
     policy:
       pose.providerId === 'google'
@@ -53,6 +103,7 @@ export function normalizeStreetPoseEvidence(pose) {
 export function mayTextureFromStreetEvidence(evidence) {
   return Boolean(
     evidence &&
+    PROVIDERS.has(evidence.provider) &&
     evidence.provider !== 'google' &&
     evidence.texture_approved === true &&
     evidence.review?.rights === 'approved' &&
@@ -155,6 +206,8 @@ export function proposeStreetFacade(
   if (
     !Number.isFinite(camera?.lon) ||
     !Number.isFinite(camera?.lat) ||
+    Math.abs(camera.lon) > 180 ||
+    Math.abs(camera.lat) > 90 ||
     !Number.isFinite(target?.lon) ||
     !Number.isFinite(target?.lat) ||
     Math.abs(target.lon) > 180 ||
@@ -166,12 +219,17 @@ export function proposeStreetFacade(
   const radians = Math.PI / 180;
   const north = (target.lat - camera.lat) * 111195;
   const east =
-    (target.lon - camera.lon) *
+    (((target.lon - camera.lon + 540) % 360) - 180) *
     111195 *
     Math.cos(((target.lat + camera.lat) / 2) * radians);
   const distance = Math.hypot(east, north);
   const toward = normalizedHeading(Math.atan2(east, north) / radians);
-  const bearing = normalizedHeading(evidence.bearing_deg);
+  const bearing =
+    Number.isFinite(evidence.bearing_deg) &&
+    evidence.bearing_deg >= 0 &&
+    evidence.bearing_deg < 360
+      ? evidence.bearing_deg
+      : null;
   const delta =
     bearing === null ? null : Math.abs(((bearing - toward + 540) % 360) - 180);
   const fromNorth = -north;
@@ -186,7 +244,7 @@ export function proposeStreetFacade(
         : 'west';
   const facing =
     distance <= maxDistanceMeters &&
-    (evidence.is_panorama === true || delta === null || delta <= 35);
+    (evidence.is_panorama === true || (delta !== null && delta <= 35));
   return {
     target_id: target.id ?? null,
     candidate_facade: distance < 2 ? null : face,
@@ -209,13 +267,15 @@ export function isReleaseClearedStreetTexture(photo) {
     !mayTextureFromStreetEvidence(photo) ||
     typeof photo.target_building_id !== 'string' ||
     photo.target_building_id.trim().length === 0 ||
-    !/^https:\/\//.test(photo.source_url || '') ||
+    !httpsUrl(photo.source_url) ||
     !photo.creator ||
     !photo.license_claim ||
     !photo.review?.reviewed_by ||
     !Number.isFinite(Date.parse(photo.review?.reviewed_at || '')) ||
-    !photo.review?.rights_evidence_url ||
-    !/^https:\/\//.test(photo.review.rights_evidence_url)
+    photo.review?.view !== 'verified' ||
+    photo.review?.provider_terms !== 'approved' ||
+    !httpsUrl(photo.review?.rights_evidence_url) ||
+    !httpsUrl(photo.review?.provider_terms_evidence_url)
   )
     return false;
   return true;
