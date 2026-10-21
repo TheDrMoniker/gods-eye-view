@@ -1,0 +1,4 @@
+# Research-only toolchain, not part of the God’s Eye application runtime.
+-r requirements-reconstruction.txt
+trimesh>=4.5,<5
+mapbox_earcut>=1.0,<2
