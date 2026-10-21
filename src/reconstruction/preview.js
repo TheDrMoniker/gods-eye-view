@@ -16,7 +16,9 @@ export async function addLocalResearchBuildingPreview({
   if (!localResearchOnly)
     throw new Error('Unreviewed building geometry: explicit research preview only');
   if (typeof glbUrl !== 'string' ||
-      !(glbUrl.startsWith('blob:') || glbUrl.startsWith('/')))
+      !(glbUrl.startsWith('blob:') ||
+        (glbUrl.startsWith('/') && !glbUrl.startsWith('//') &&
+         !glbUrl.includes('..'))))
     throw new TypeError('Use a local GLB Blob URL or same-origin path');
   if (!Number.isFinite(originLon) || Math.abs(originLon) > 180 ||
       !Number.isFinite(originLat) || Math.abs(originLat) > 90 ||

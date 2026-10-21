@@ -46,3 +46,13 @@ test('requires actual ellipsoidal terrain placement and blocks remote models',as
   await assert.rejects(addLocalResearchBuildingPreview({...base,
     originEllipsoidalHeightM:300,glbUrl:'https://example.org/mesh.glb'}),/local GLB/);
 });
+
+test('protocol-relative URLs cannot bypass local-only asset policy', async () => {
+  const h = harness();
+  await assert.rejects(addLocalResearchBuildingPreview({
+    Cesium: h.Cesium, viewer: h.viewer,
+    glbUrl: '//outside.example/mesh.glb',
+    originLon: -112.077, originLat: 33.448,
+    originEllipsoidalHeightM: 340, localResearchOnly: true,
+  }), /local GLB/);
+});

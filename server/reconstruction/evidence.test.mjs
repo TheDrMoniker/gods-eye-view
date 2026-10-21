@@ -177,3 +177,18 @@ test('only explicitly reviewed images and measured geometry update gaps', () => 
   assert.equal(registry.summary.measured_lidar_available, false);
   assert.equal(registry.status, 'EVIDENCE_INTAKE_HOLD');
 });
+
+test('Commons coordinates never automatically verify a tower face or camera pose', () => {
+  const page = file(29, 'City Hall viewpoint.jpg');
+  page.imageinfo[0].extmetadata.GPSLatitude = { value: '33.448416' };
+  page.imageinfo[0].extmetadata.GPSLongitude = { value: '-112.076829' };
+  page.imageinfo[0].extmetadata.GPSMapDatum = { value: 'WGS-84' };
+  const candidate = normalizeCommonsPhoto(page);
+  assert.deepEqual(candidate.coordinate_hint, {
+    lat: 33.448416, lon: -112.076829, datum_claim: 'WGS-84',
+    role: 'unverified_may_be_camera_or_subject', reviewed: false,
+  });
+  assert.equal(candidate.review.view, 'unverified');
+  page.imageinfo[0].extmetadata.GPSLatitude.value = '9999';
+  assert.equal(normalizeCommonsPhoto(page).coordinate_hint, null);
+});

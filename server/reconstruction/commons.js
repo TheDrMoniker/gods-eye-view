@@ -30,6 +30,20 @@ export function licenseHint(shortName) {
   return 'unknown_or_restricted';
 }
 
+function metadataLocationHint(meta) {
+  const lat = Number(meta.GPSLatitude?.value ?? meta.GPSLatitude);
+  const lon = Number(meta.GPSLongitude?.value ?? meta.GPSLongitude);
+  if (!meta.GPSLatitude || !meta.GPSLongitude ||
+      !Number.isFinite(lat) || Math.abs(lat) > 90 ||
+      !Number.isFinite(lon) || Math.abs(lon) > 180) return null;
+  return {
+    lat, lon,
+    datum_claim: plainText(meta.GPSMapDatum) || null,
+    role: 'unverified_may_be_camera_or_subject',
+    reviewed: false,
+  };
+}
+
 export function normalizeCommonsPhoto(page) {
   if (page?.ns !== 6 || !page?.title?.startsWith('File:')) return null;
   const info = Array.isArray(page.imageinfo) ? page.imageinfo[0] || {} : {};
@@ -52,6 +66,7 @@ export function normalizeCommonsPhoto(page) {
     },
     captured_at_text: plainText(meta.DateTimeOriginal) || null,
     uploaded_at: info.timestamp || null,
+    coordinate_hint: metadataLocationHint(meta),
     pixel_width: Number.isFinite(info.width) ? info.width : null,
     pixel_height: Number.isFinite(info.height) ? info.height : null,
     review: {
@@ -116,7 +131,7 @@ export async function discoverCommonsPhotos({
       prop: 'imageinfo',
       iiprop: 'size|timestamp|extmetadata',
       iiextmetadatafilter:
-        'Artist|Credit|DateTimeOriginal|LicenseShortName|LicenseUrl',
+        'Artist|Credit|DateTimeOriginal|LicenseShortName|LicenseUrl|GPSLatitude|GPSLongitude|GPSMapDatum',
       format: 'json',
       formatversion: '2',
       ...(continuation || {}),
