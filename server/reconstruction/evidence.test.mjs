@@ -185,8 +185,11 @@ test('Commons coordinates never automatically verify a tower face or camera pose
   page.imageinfo[0].extmetadata.GPSMapDatum = { value: 'WGS-84' };
   const candidate = normalizeCommonsPhoto(page);
   assert.deepEqual(candidate.coordinate_hint, {
-    lat: 33.448416, lon: -112.076829, datum_claim: 'WGS-84',
-    role: 'unverified_may_be_camera_or_subject', reviewed: false,
+    lat: 33.448416,
+    lon: -112.076829,
+    datum_claim: 'WGS-84',
+    role: 'unverified_may_be_camera_or_subject',
+    reviewed: false,
   });
   assert.equal(candidate.review.view, 'unverified');
   page.imageinfo[0].extmetadata.GPSLatitude.value = '9999';

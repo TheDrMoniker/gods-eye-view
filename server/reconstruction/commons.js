@@ -33,11 +33,18 @@ export function licenseHint(shortName) {
 function metadataLocationHint(meta) {
   const lat = Number(meta.GPSLatitude?.value ?? meta.GPSLatitude);
   const lon = Number(meta.GPSLongitude?.value ?? meta.GPSLongitude);
-  if (!meta.GPSLatitude || !meta.GPSLongitude ||
-      !Number.isFinite(lat) || Math.abs(lat) > 90 ||
-      !Number.isFinite(lon) || Math.abs(lon) > 180) return null;
+  if (
+    !meta.GPSLatitude ||
+    !meta.GPSLongitude ||
+    !Number.isFinite(lat) ||
+    Math.abs(lat) > 90 ||
+    !Number.isFinite(lon) ||
+    Math.abs(lon) > 180
+  )
+    return null;
   return {
-    lat, lon,
+    lat,
+    lon,
     datum_claim: plainText(meta.GPSMapDatum) || null,
     role: 'unverified_may_be_camera_or_subject',
     reviewed: false,

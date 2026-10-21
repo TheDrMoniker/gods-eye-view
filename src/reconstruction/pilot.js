@@ -38,15 +38,21 @@ export function createGodsEyeStreetReconPilot({
       originEllipsoidalHeightM,
     } = {}) {
       if (disposed) throw new Error('Pilot disposed');
-      if (manifest?.status !== 'GEOMETRY_CANDIDATE_UNCERTIFIED' ||
-          manifest?.rights?.approved_for_public_release !== false ||
-          (manifest?.textures?.length ?? 0) !== 0 ||
-          !Array.isArray(manifest?.origin_wgs84_lon_lat) ||
-          manifest.origin_wgs84_lon_lat.length !== 2)
-        throw new Error('Only an uncertified untextured local massing manifest is allowed');
+      if (
+        manifest?.status !== 'GEOMETRY_CANDIDATE_UNCERTIFIED' ||
+        manifest?.rights?.approved_for_public_release !== false ||
+        (manifest?.textures?.length ?? 0) !== 0 ||
+        !Array.isArray(manifest?.origin_wgs84_lon_lat) ||
+        manifest.origin_wgs84_lon_lat.length !== 2
+      )
+        throw new Error(
+          'Only an uncertified untextured local massing manifest is allowed',
+        );
       const ticket = ++generation;
       const newModel = await addLocalResearchBuildingPreview({
-        Cesium, viewer, glbUrl,
+        Cesium,
+        viewer,
+        glbUrl,
         originLon: manifest.origin_wgs84_lon_lat[0],
         originLat: manifest.origin_wgs84_lon_lat[1],
         originEllipsoidalHeightM,
